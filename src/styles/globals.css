@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Gothic A1", sans-serif;
+  height: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  display: inline-block;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+#__next {
+  height: 100%;
+}
+
+.custom-scrollbar {
+  overflow-y: scroll;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 0.6rem;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #202022;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #444444;
+}
+
+@media screen and (max-width: 767px) {
+  .custom-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
