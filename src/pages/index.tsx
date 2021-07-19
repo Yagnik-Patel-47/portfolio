@@ -25,10 +25,7 @@ const Home: FC = () => {
               Yagnik Patel.
             </h1>
             <p className="leading-loose text-textSc text-base">
-              I’m an 11th grade student as a self taught web developer. Since I
-              was learning web development, I’m very curious and passionated
-              about it and love to learn new stuff. Looking for an awesome
-              community, which can help me grow further.
+              I’m an 11th-grade student as a self-taught web developer. Since I am learning web development, I’m curious and passionate about it and love to learn new stuff. Looking for a helping community, which can help me grow further.
             </p>
           </div>
           <div className="flex space-x-8 items-center mt-8 md:mt-0">
