@@ -4,8 +4,11 @@ import { AiFillGithub } from "react-icons/ai";
 import { AiOutlineTwitter } from "react-icons/ai";
 import AppLink from "../components/AppLink";
 import ProjectBar from "../components/ProjectBar";
+import { motion } from "framer-motion";
 
 const Home: FC = () => {
+  const title = "Hello 👋🏻, I’m \n Yagnik Patel.";
+
   return (
     <>
       <Seo />
@@ -16,24 +19,21 @@ const Home: FC = () => {
         >
           <div className="flex flex-col space-y-6">
             <h1 className="text-5xl md:text-6xl font-bold leading-tight">
-              Hello{" "}
-              <span aria-label="emoji" role="img">
-                👋🏻
-              </span>
-              , I’m
-              <br />
-              Yagnik Patel.
+              {title}
             </h1>
             <p className="leading-loose text-textSc text-base">
-              I’m an 11th-grade student as a self-taught web developer. Since I am learning web development, I’m curious and passionate about it and love to learn new stuff. Looking for a helping community, which can help me grow further.
+              I’m an 11th-grade student as a self-taught web developer. Since I
+              am learning web development, I’m curious and passionate about it
+              and love to learn new stuff. Looking for a helping community,
+              which can help me grow further.
             </p>
           </div>
           <div className="flex space-x-8 items-center mt-8 md:mt-0">
             <AppLink title="Github" link="https://github.com/CodeAddicted0">
-              <AiFillGithub size="1.5rem" title="Github Icon" />
+              <AiFillGithub size="1.5rem" title="Github" />
             </AppLink>
             <AppLink title="Twitter" link="https://twitter.com/YagnikP26385066">
-              <AiOutlineTwitter size="1.5rem" title="Github Icon" />
+              <AiOutlineTwitter size="1.5rem" title="Twitter" />
             </AppLink>
           </div>
         </div>

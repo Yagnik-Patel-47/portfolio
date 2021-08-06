@@ -1,5 +1,6 @@
-import { FC } from "react";
-import { animated, useSpring } from "@react-spring/web";
+import { FC, useEffect } from "react";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 interface Props {
   title: string;
@@ -7,6 +8,7 @@ interface Props {
   description: string;
   demoLink: string;
   repoLink: string;
+  index: number;
 }
 
 const ProjectCard: FC<Props> = ({
@@ -15,34 +17,36 @@ const ProjectCard: FC<Props> = ({
   description,
   demoLink,
   repoLink,
+  index,
 }: Props) => {
-  const [hoverSpring, set] = useSpring(() => ({
-    scale: 1,
-    config: { mass: 5, tension: 2000, friction: 200, duration: 150 },
-  }));
+  const controls = useAnimation();
+  const [ref, inView] = useInView();
+
+  useEffect(() => {
+    if (inView) {
+      controls.start("visible");
+    }
+    console.log(inView);
+  }, [controls, inView]);
 
   return (
-    <animated.div
-      style={hoverSpring}
+    <motion.div
+      animate={controls}
+      initial="hidden"
+      variants={{
+        visible: { x: 0, opacity: 1 },
+        hidden: { x: index % 2 === 0 ? 50 : -50, opacity: 0 },
+      }}
+      transition={{
+        duration: 0.4,
+        delay: index + 1 !== 1 ? (index + 1) / 10 : 0,
+        type: "spring",
+        stiffness: 200,
+      }}
+      whileHover={{ scale: 1.05, transition: { delay: 0 } }}
+      whileTap={{ scale: 0.95, transition: { delay: 0 } }}
       className="bg-surface px-10 py-8 flex flex-col space-y-2"
-      onMouseEnter={() => {
-        set({ scale: 1.1 });
-      }}
-      onMouseLeave={() => {
-        set({ scale: 1 });
-      }}
-      onMouseDown={() => {
-        set({
-          scale: 0.95,
-          config: { mass: 5, tension: 2000, friction: 200, duration: 100 },
-        });
-      }}
-      onMouseUp={() => {
-        set({
-          scale: 1,
-          config: { mass: 5, tension: 2000, friction: 200, duration: 150 },
-        });
-      }}
+      ref={ref}
     >
       <p className="text-textSc uppercase font-medium tracking-widest text-sm">
         {techTitle}
@@ -65,7 +69,7 @@ const ProjectCard: FC<Props> = ({
           Repository
         </a>
       </div>
-    </animated.div>
+    </motion.div>
   );
 };
 
